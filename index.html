@@ -1,0 +1,241 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Strong Password Generator 2.o</title>
+    <link rel="stylesheet"
+        href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@48,700,0,0" />
+    <style>
+        * {
+            box-sizing: border-box;
+            padding: 0px;
+            margin: 0px;
+        }
+
+        body {
+            font-family: monospace;
+            background-color: #13121A;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            flex-direction: column;
+            padding: 100px;
+        }
+
+        body p {
+            font-weight: 700;
+            font-size: 30px;
+            color: grey;
+        }
+
+        .Password-Div {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            background-color: #24232C;
+            color: #55535C;
+            /* border: 2px solid red; */
+            padding: 20px;
+            font-size: 30px;
+            width: 500px;
+            margin: 30px;
+        }
+
+        span {
+            color: #A4FFAF;
+        }
+
+        .content {
+            background-color: #24232C;
+            padding: 20px;
+            width: 500px;
+        }
+
+        .slider {
+            width: 400px;
+            color: #A4FFAF;
+            background: #A4FFAF;
+            cursor: pointer;
+        }
+
+        label {
+            color: white;
+            font-size: 20px;
+
+        }
+
+        .slider-content {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .text {
+            font-weight: 700;
+            font-size: 30px;
+            color: #A4FFAF;
+        }
+
+        #btn{
+            background-color: #A4FFAF;
+            margin: 0px;
+            width: 500px;
+            font-family: monospace;
+            font-weight: 700;
+            font-size: 20px;
+            padding: 30px 0px;
+            cursor: pointer;
+            border-radius: 0px 0px 5px 5px;
+        }
+        #copy{
+            cursor: pointer;
+        }
+    </style>
+</head>
+
+<body>
+    <p>Password Generator</p>
+    <div class="Password-Div"><strong id="generated-Password">2@Hh&%Er$
+        </strong>
+        <span class="material-symbols-outlined" id="copy">file_copy</span>
+    </div>
+    <div class="content">
+        <label>Character Length</label>
+        <div class="slider-content">
+            <input type="range" min="8" max="16" value="8" class="slider" id="myRange">
+            <label for="range" id="range-count" class="text">8</label>
+        </div><br>
+        <input type="checkbox" id="upperCase" name="vehicle1" value="Bike" class="checkbox">
+        <label for="upperCase"> Include UpperCase Letters</label><br><br>
+        <input type="checkbox" id="lowerCase" name="vehicle1" value="Bike" class="checkbox">
+        <label for="lowerCase"> Include LowerCase Letters</label><br><br>
+        <input type="checkbox" id="numbers" name="vehicle1" value="Bike" class="checkbox">
+        <label for="lowerCase"> Include Numbers</label><br><br>
+        <input type="checkbox" id="characters" name="vehicle1" value="Bike" class="checkbox">
+        <label for="lowerCase"> Include Special Characters</label><br><br>
+    </div>
+    <button id="btn">Generate Password Now</button>
+    <script>
+        // let upperCase = ["A","B","C","D","E","F","G","H","I","J","K","L","M","N","O","P","Q","R","S","T","U","V","W","X","Y","Z"]
+       
+        // let lowerCase = ["a","b","c","d","e","f","g","h","i","j","k","l","m","n","o","p","q","r","s","t","u","v","w","x","y","z"]
+        // let numbers = [1,2,3,4,5,6,7,8,9,0]
+        // let symbols = ["!","@","#","$","%","^","&","*","(",")"]
+        let upperCase = "ABCDEFGHIJKLMNOPQRSTUVWXYZ"
+        let lowerCase = "abcdefghijklmnopqrstuvwxyz"
+        let number = "1234567890"
+        let symbools = "!@#$%^&*()"
+        let rangecount = document.getElementById("range-count")
+        let myRange = document.getElementById("myRange")
+        let btn = document.getElementById("btn")
+        let emptyString=[];
+        let newEmptyString="";
+        let generatedcharecters = document.getElementById("generated-Password")
+        let upperCaseCheckbox = document.getElementById("upperCase")
+        let lowerCaseCheckbox = document.getElementById("lowerCase")
+        let numbersCheckbox = document.getElementById("numbers")
+        let charactersCheckbox = document.getElementById("characters")
+        let copy=document.getElementById("copy")
+
+        copy.addEventListener("click", ()=>{
+            navigator.clipboard.writeText(generatedcharecters.innerText);
+            console.log("Copied")
+        })
+
+        myRange.addEventListener("click", () =>{
+            rangecount.innerText = myRange.value;
+        })
+
+        upperCaseCheckbox.addEventListener("click",function(){
+            if(upperCaseCheckbox.checked){
+                emptyString.push(upperCase);
+                console.log(emptyString)
+            }else if(!upperCaseCheckbox.checked){
+                for (let i = 0; i < emptyString.length; i++) {
+                if (emptyString[i][0] === "A"){
+                    emptyString.splice(i,1)
+                    let index = i;
+                    console.log(emptyString)
+                }
+                }
+            }
+        })
+        
+        lowerCaseCheckbox.addEventListener("click",function(){
+            if(lowerCaseCheckbox.checked){
+                emptyString.push(lowerCase);
+                console.log(emptyString)
+            }else if(!lowerCaseCheckbox.checked){
+                for (let i = 0; i < emptyString.length; i++) {
+                if (emptyString[i][0] === "a"){
+                    emptyString.splice(i,1)
+                    let index = i;
+                    console.log(emptyString)
+                }
+                }
+            }
+        })
+
+        numbersCheckbox.addEventListener("click",function(){
+            if(numbersCheckbox.checked){
+                emptyString.push(number);
+                console.log(emptyString)
+            }else if(!numbersCheckbox.checked){
+                for (let i = 0; i < emptyString.length; i++) {
+                if (emptyString[i][0] === "1"){
+                    emptyString.splice(i,1)
+                    console.log(emptyString)
+                }
+                }
+            }
+        })
+
+        charactersCheckbox.addEventListener("click",function(){
+            if(charactersCheckbox.checked){
+                emptyString.push(symbools);
+                console.log(emptyString)
+            }else if(!charactersCheckbox.checked){
+                for (let i = 0; i < emptyString.length; i++) {
+                if (emptyString[i][0] === "!"){
+                    emptyString.splice(i,1)
+                    console.log(emptyString)
+                }
+                }
+            }
+        })
+
+        btn.addEventListener("click", ()=>{
+
+            for(let i=0;i<emptyString.length;i++){
+                for(let j=0;j<(Math.floor(rangecount.innerText/emptyString.length));j++){
+                newEmptyString += emptyString[i][Math.floor(Math.random()*emptyString[i].length)]
+                }
+            }
+            console.log(newEmptyString)
+            if(newEmptyString.length != rangecount.innerText){
+                let leftChar = rangecount.innerText - newEmptyString.length;
+                for(let k=0; k<leftChar; k++){
+                    console.log(leftChar)
+                    newEmptyString += emptyString[k][Math.floor(Math.random() * newEmptyString.length )]
+                    console.log(newEmptyString)
+                    console.log(newEmptyString.length)
+                }
+                console.log("New String have Equal number of Char to range Selected.")
+            }
+            let finalPass=""
+            for( let l=0; l<newEmptyString.length ; l++){
+                finalPass += newEmptyString[Math.floor(Math.random()*newEmptyString.length)]
+            }
+            generatedcharecters.innerText = finalPass;
+            console.log(finalPass)
+            newEmptyString = ""
+            
+        })
+
+    </script>
+</body>
+
+</html>

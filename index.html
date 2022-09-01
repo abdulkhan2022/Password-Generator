@@ -156,12 +156,12 @@
         let charactersCheckbox = document.getElementById("characters")
         let copy=document.getElementById("copy")
 
-        copy.addEventListener("change", ()=>{
+        copy.addEventListener("click", ()=>{
             navigator.clipboard.writeText(generatedcharecters.innerText);
             console.log("Copied")
         })
 
-        myRange.addEventListener("click", () =>{
+        myRange.addEventListener("change", () =>{
             rangecount.innerText = myRange.value;
         })
 

@@ -5,7 +5,7 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Abdul Rahman Khan Strong Password Generator 2.o</title>
+    <title>Strong Password Generator 2.o</title>
     <link rel="stylesheet"
         href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@48,700,0,0" />
     <style>
@@ -28,7 +28,9 @@
         body p {
             font-weight: 700;
             font-size: 30px;
-            color: grey;
+            color:#A4FFAF;
+            width: 90vw;
+            text-align: center;
         }
 
         .Password-Div {
@@ -93,11 +95,25 @@
         #copy{
             cursor: pointer;
         }
+        @media only screen and  (max-width: 600px) {
+            body{
+                /* background-color: white; */
+            }
+            .content{
+                width: 90vw;
+            }
+            .Password-Div{
+                width: 90vw;
+            }
+            #btn{
+                width: 90vw;
+            }
+        }
     </style>
 </head>
 
 <body>
-    <p>Abdul Password Generator</p>
+    <p> Abdul Password Generator</p>
     <div class="Password-Div"><strong id="generated-Password">2@Hh&%Er$
         </strong>
         <span class="material-symbols-outlined" id="copy">file_copy</span>

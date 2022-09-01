@@ -156,7 +156,7 @@
         let charactersCheckbox = document.getElementById("characters")
         let copy=document.getElementById("copy")
 
-        copy.addEventListener("click", ()=>{
+        copy.addEventListener("change", ()=>{
             navigator.clipboard.writeText(generatedcharecters.innerText);
             console.log("Copied")
         })
